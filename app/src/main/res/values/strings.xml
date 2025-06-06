@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">MyContactPro</string>
+    <string name="addContact">Ajouter un contact</string>
+    <string name="firstName">Prénom</string>
+    <string name="lastName">Nom</string>
+    <string name="company">Société</string>
+    <string name="address">Adresse</string>
+    <string name="tel">Tel</string>
+    <string name="mail">Email</string>
+    <string name="addButton">Ajouter</string>
+    <string name="cancelButton">Annuler</string>
+    <string-array name="sector">
+        <item>Industrie</item>
+        <item>Santé</item>
+        <item>Informatique</item>
+    </string-array>
 </resources>
