@@ -91,10 +91,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread() {
             public void run() {
                 runOnUiThread(() -> {
-                    // récupère la liste des todos
                     List<Contact> contacts = ContactDatabase.getDb(context).contactDAO().getAll();
-
-                    // crée l'adapter et lie l'adapter avec le RecyclerView
                     ContactAdapter contactAdapter = new ContactAdapter(contacts);
                     contactAdapter.setOnItemClickListener(contact -> {
                         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
