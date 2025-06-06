@@ -9,6 +9,8 @@
     <string name="mail">Email</string>
     <string name="addButton">Ajouter</string>
     <string name="cancelButton">Annuler</string>
+    <string name="updateContact">Modifier</string>
+    <string name="deleteContact">Supprimer</string>
     <string-array name="sector">
         <item>Industrie</item>
         <item>Santé</item>
