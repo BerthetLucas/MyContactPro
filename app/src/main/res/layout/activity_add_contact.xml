@@ -7,16 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".AddContactActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarAddContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/firstName"
+        Of="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="40dp"
         android:hint="@string/firstName"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarAddContact" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/lastName"
@@ -96,6 +105,5 @@
         android:text="@string/cancelButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/addButton" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

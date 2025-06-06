@@ -14,12 +14,22 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mycontactpro.pojos.Contact;
+import com.example.mycontactpro.pojos.ContactAdapter;
+import com.example.mycontactpro.pojos.ContactDatabase;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
     private Resources resources;
     private Toolbar toolbar;
+
+    private RecyclerView rvContact;
 
 
     @Override
@@ -37,10 +47,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        initRecyclerView();
     }
 
 
@@ -64,6 +73,45 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loadContacts();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadContacts();
+    }
+
+    private void loadContacts() {
+        new Thread() {
+            public void run() {
+                runOnUiThread(() -> {
+                    // récupère la liste des todos
+                    List<Contact> contacts = ContactDatabase.getDb(context).contactDAO().getAll();
+
+                    // crée l'adapter et lie l'adapter avec le RecyclerView
+                    ContactAdapter contactAdapter = new ContactAdapter(contacts);
+                    contactAdapter.setOnItemClickListener(contact -> {
+                        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                        intent.putExtra("contact_id", contact.getId());
+                        startActivity(intent);
+                    });
+                    rvContact.setAdapter(contactAdapter);
+                });
+            }
+        }.start();
+    }
+
+    private void initRecyclerView() {
+        rvContact = findViewById(R.id.rvContact);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        rvContact.setHasFixedSize(true);
+        rvContact.setLayoutManager(layoutManager);
     }
 
 }

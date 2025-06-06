@@ -17,6 +17,8 @@ public class Contact implements Serializable {
     private String prenom;
     @ColumnInfo(name = "societe")
     private String societe;
+    @ColumnInfo(name = "addresse")
+    private String addresse;
     @ColumnInfo(name = "tel")
     private String tel;
     @ColumnInfo(name = "email")
@@ -26,10 +28,11 @@ public class Contact implements Serializable {
     @ColumnInfo(name = "favori")
     private int favori;
 
-    public Contact(String nom, String prenom, String societe, String tel, String email, String secteur, int favori) {
+    public Contact(String nom, String prenom, String societe, String addresse, String tel, String email, String secteur, int favori) {
         this.nom = nom;
         this.prenom = prenom;
         this.societe = societe;
+        this.addresse = addresse;
         this.tel = tel;
         this.email = email;
         this.secteur = secteur;
@@ -66,6 +69,14 @@ public class Contact implements Serializable {
 
     public void setSociete(String societe) {
         this.societe = societe;
+    }
+
+    public String getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
     }
 
     public String getTel() {
