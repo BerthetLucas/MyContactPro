@@ -1,6 +1,6 @@
 # MyContactPro
 
-Une application Android complète de gestion de contacts professionnels développée en Java avec une interface moderne et intuitive.
+Une application Android complète de gestion de contacts professionnels développée en Java.
 
 ## 📱 Fonctionnalités
 
@@ -16,7 +16,6 @@ Une application Android complète de gestion de contacts professionnels dévelop
 - **Géolocalisation** : Accès aux permissions de localisation
 
 ### Interface utilisateur
-- Design moderne avec Material Design
 - Liste scrollable avec RecyclerView
 - Navigation fluide entre les écrans
 - Barre d'outils avec menu d'actions
@@ -60,11 +59,9 @@ Une application Android complète de gestion de contacts professionnels dévelop
 
 ## 🎯 Utilisation
 
-1. **Ajouter un contact** : Utilisez le bouton "+" dans la barre d'outils
+1. **Ajouter un contact** : Utilisez le bouton dans la barre d'outils
 2. **Consulter un contact** : Tapez sur n'importe quel contact dans la liste
 3. **Modifier un contact** : Depuis l'écran de détails, utilisez l'option de modification
 4. **Actions rapides** : Appelez ou envoyez un SMS directement depuis l'application
 
 ---
-
-*Application développée pour la gestion professionnelle de contacts avec une base de données locale sécurisée.*
