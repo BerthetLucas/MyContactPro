@@ -2,7 +2,6 @@ package com.example.mycontactpro;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,19 +26,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private Context context;
-    private Resources resources;
     private Toolbar toolbar;
-
     private RecyclerView rvContact;
-
     private MaterialSwitch swFav;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         context = getApplicationContext();
-        resources = getResources();
 
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -56,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         initSwitch();
     }
 
-
     private void initSwitch() {
         swFav = findViewById(R.id.swFav);
 
@@ -68,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
+    
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);

@@ -88,7 +88,6 @@ public class UpdateContactActivity extends AppCompatActivity {
         company.setText(contact.getSociete());
     }
 
-
     public void updateContact(Contact contact) {
         if (areFieldFill()) {
             Contact updatedcontact = new Contact(
@@ -123,7 +122,6 @@ public class UpdateContactActivity extends AppCompatActivity {
 
     }
 
-
     private boolean areFieldFill() {
         return !firstName.getText().toString().trim().isEmpty() &&
                 !lastName.getText().toString().trim().isEmpty() &&
@@ -132,7 +130,6 @@ public class UpdateContactActivity extends AppCompatActivity {
                 !tel.getText().toString().trim().isEmpty() &&
                 !mail.getText().toString().trim().isEmpty();
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {
