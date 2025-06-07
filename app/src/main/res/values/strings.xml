@@ -11,6 +11,7 @@
     <string name="cancelButton">Annuler</string>
     <string name="updateContact">Modifier</string>
     <string name="deleteContact">Supprimer</string>
+    <string name="favorites">Favoris</string>
     <string-array name="sector">
         <item>Industrie</item>
         <item>Santé</item>

@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mycontactpro.pojos.Contact;
 import com.example.mycontactpro.pojos.ContactAdapter;
 import com.example.mycontactpro.pojos.ContactDatabase;
+import com.google.android.material.materialswitch.MaterialSwitch;
 
 import java.util.List;
 
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
 
     private RecyclerView rvContact;
+
+    private MaterialSwitch swFav;
 
 
     @Override
@@ -50,6 +53,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         initRecyclerView();
+        initSwitch();
+    }
+
+
+    private void initSwitch() {
+        swFav = findViewById(R.id.swFav);
+
+        swFav.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                loadFavoriteContacts();
+            } else {
+                loadContacts();
+            }
+        });
     }
 
 
@@ -93,6 +110,23 @@ public class MainActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     List<Contact> contacts = ContactDatabase.getDb(context).contactDAO().getAll();
                     ContactAdapter contactAdapter = new ContactAdapter(contacts);
+                    contactAdapter.setOnItemClickListener(contact -> {
+                        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                        intent.putExtra("contact_id", contact.getId());
+                        startActivity(intent);
+                    });
+                    rvContact.setAdapter(contactAdapter);
+                });
+            }
+        }.start();
+    }
+
+    private void loadFavoriteContacts() {
+        new Thread() {
+            public void run() {
+                runOnUiThread(() -> {
+                    List<Contact> favoriteContacts = ContactDatabase.getDb(context).contactDAO().getFavorites();
+                    ContactAdapter contactAdapter = new ContactAdapter(favoriteContacts);
                     contactAdapter.setOnItemClickListener(contact -> {
                         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                         intent.putExtra("contact_id", contact.getId());

@@ -17,6 +17,9 @@ public interface ContactDAO {
     @Query("SELECT * FROM contact WHERE id= :id")
     public Contact getById(Long id);
 
+    @Query("SELECT * FROM contact WHERE favori = 1")
+    public List<Contact> getFavorites();
+
     @Insert
     public void add(Contact... contacts);
 
